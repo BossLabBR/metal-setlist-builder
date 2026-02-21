@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 750" font-family="monospace" font-size="13">
+  <rect width="960" height="750" fill="#111"/>
+  
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8" fill="#ff6b35"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="480" y="30" fill="#ff6b35" font-size="16" text-anchor="middle" font-weight="bold">TELA 3 - SETLIST BUILDER</text>
+
+  <!-- Browser frame -->
+  <rect x="30" y="50" width="900" height="670" rx="8" fill="#0d0d0d" stroke="#444" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <rect x="30" y="50" width="900" height="50" rx="8" fill="#1a1a1a"/>
+  <rect x="30" y="92" width="900" height="8" fill="#1a1a1a"/>
+  <text x="60" y="82" fill="#ff6b35" font-size="15" font-weight="bold">METAL SETLIST BUILDER</text>
+  <rect x="780" y="65" width="120" height="30" rx="4" fill="none" stroke="#444" stroke-width="1"/>
+  <text x="806" y="84" fill="#888" font-size="12">My Setlists</text>
+
+  <!-- Breadcrumb -->
+  <text x="60" y="130" fill="#ff6b35" font-size="12">&#x2190; Back to Megadeth albums</text>
+
+  <!-- Album info bar -->
+  <rect x="60" y="145" width="850" height="50" rx="6" fill="#1a1a1a"/>
+  <rect x="72" y="155" width="30" height="30" rx="3" fill="#2a2a2a"/>
+  <text x="82" y="175" fill="#555" font-size="9">img</text>
+  <text x="115" y="168" fill="#e8e8e8" font-size="14" font-weight="bold">Rust in Peace</text>
+  <text x="115" y="185" fill="#888" font-size="11">Megadeth  -  1990  -  9 tracks  -  40:18 total</text>
+
+  <!-- ===== LEFT COLUMN: Available Tracks ===== -->
+  <text x="60" y="225" fill="#888" font-size="11" font-weight="bold" letter-spacing="1">AVAILABLE TRACKS</text>
+
+  <!-- Annotation: API -->
+  <text x="255" y="225" fill="#ff6b35" font-size="10">GET /api/albums/{id}/tracks</text>
+
+  <!-- Track 1 -->
+  <rect x="60" y="238" width="400" height="40" rx="4" fill="#1a1a1a"/>
+  <text x="78" y="263" fill="#888" font-size="11">1</text>
+  <text x="100" y="263" fill="#e8e8e8" font-size="12">Holy Wars...The Punishment Due</text>
+  <text x="420" y="263" fill="#888" font-size="11" text-anchor="end">6:31</text>
+  <text x="440" y="263" fill="#ff6b35" font-size="16">+</text>
+
+  <!-- Track 2 -->
+  <rect x="60" y="283" width="400" height="40" rx="4" fill="#1a1a1a"/>
+  <text x="78" y="308" fill="#888" font-size="11">2</text>
+  <text x="100" y="308" fill="#e8e8e8" font-size="12">Hangar 18</text>
+  <text x="420" y="308" fill="#888" font-size="11" text-anchor="end">5:13</text>
+  <text x="440" y="308" fill="#ff6b35" font-size="16">+</text>
+
+  <!-- Track 3 -->
+  <rect x="60" y="328" width="400" height="40" rx="4" fill="#1a1a1a"/>
+  <text x="78" y="353" fill="#888" font-size="11">3</text>
+  <text x="100" y="353" fill="#e8e8e8" font-size="12">Take No Prisoners</text>
+  <text x="420" y="353" fill="#888" font-size="11" text-anchor="end">3:27</text>
+  <text x="440" y="353" fill="#ff6b35" font-size="16">+</text>
+
+  <!-- Track 4 (being dragged - dashed) -->
+  <rect x="60" y="373" width="400" height="40" rx="4" fill="none" stroke="#ff6b35" stroke-width="1" stroke-dasharray="5"/>
+  <text x="78" y="398" fill="#555" font-size="11">4</text>
+  <text x="100" y="398" fill="#555" font-size="12">Five Magics</text>
+  <text x="420" y="398" fill="#555" font-size="11" text-anchor="end">5:34</text>
+
+  <!-- Track 5 -->
+  <rect x="60" y="418" width="400" height="40" rx="4" fill="#1a1a1a"/>
+  <text x="78" y="443" fill="#888" font-size="11">5</text>
+  <text x="100" y="443" fill="#e8e8e8" font-size="12">Poison Was the Cure</text>
+  <text x="420" y="443" fill="#888" font-size="11" text-anchor="end">2:56</text>
+  <text x="440" y="443" fill="#ff6b35" font-size="16">+</text>
+
+  <!-- Track 6 -->
+  <rect x="60" y="463" width="400" height="40" rx="4" fill="#1a1a1a"/>
+  <text x="78" y="488" fill="#888" font-size="11">6</text>
+  <text x="100" y="488" fill="#e8e8e8" font-size="12">Lucretia</text>
+  <text x="420" y="488" fill="#888" font-size="11" text-anchor="end">3:56</text>
+  <text x="440" y="488" fill="#ff6b35" font-size="16">+</text>
+
+  <!-- Track 7 -->
+  <rect x="60" y="508" width="400" height="40" rx="4" fill="#1a1a1a"/>
+  <text x="78" y="533" fill="#888" font-size="11">7</text>
+  <text x="100" y="533" fill="#e8e8e8" font-size="12">Tornado of Souls</text>
+  <text x="420" y="533" fill="#888" font-size="11" text-anchor="end">5:19</text>
+  <text x="440" y="533" fill="#ff6b35" font-size="16">+</text>
+
+  <!-- Drag annotation -->
+  <text x="200" y="400" fill="#ff6b35" font-size="10" text-anchor="middle" opacity="0.7">dragging...</text>
+  <line x1="300" y1="393" x2="490" y2="393" stroke="#ff6b35" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ===== RIGHT COLUMN: Your Setlist ===== -->
+  <text x="500" y="225" fill="#ff6b35" font-size="11" font-weight="bold" letter-spacing="1">YOUR SETLIST</text>
+  <text x="870" y="225" fill="#e8e8e8" font-size="12" text-anchor="end" font-weight="bold">Total: 11:44</text>
+
+  <!-- Setlist item 1 -->
+  <rect x="500" y="238" width="410" height="40" rx="4" fill="#1a1a1a" stroke="#ff6b35" stroke-width="1"/>
+  <text x="518" y="262" fill="#ff6b35" font-size="12" font-weight="bold">1</text>
+  <text x="540" y="262" fill="#e8e8e8" font-size="12">Holy Wars...The Punishment Due</text>
+  <text x="870" y="262" fill="#888" font-size="11" text-anchor="end">6:31</text>
+  <text x="888" y="263" fill="#888" font-size="12">&#x2261;</text>
+
+  <!-- Setlist item 2 -->
+  <rect x="500" y="283" width="410" height="40" rx="4" fill="#1a1a1a" stroke="#ff6b35" stroke-width="1"/>
+  <text x="518" y="307" fill="#ff6b35" font-size="12" font-weight="bold">2</text>
+  <text x="540" y="307" fill="#e8e8e8" font-size="12">Hangar 18</text>
+  <text x="870" y="307" fill="#888" font-size="11" text-anchor="end">5:13</text>
+  <text x="888" y="308" fill="#888" font-size="12">&#x2261;</text>
+
+  <!-- Empty drop zone -->
+  <rect x="500" y="328" width="410" height="80" rx="4" fill="none" stroke="#333" stroke-dasharray="6"/>
+  <text x="705" y="373" fill="#444" font-size="13" text-anchor="middle">drag tracks here</text>
+
+  <!-- Reorder annotation -->
+  <line x1="900" y1="262" x2="920" y2="240" stroke="#ff6b35" stroke-dasharray="4" stroke-width="1"/>
+  <text x="886" y="235" fill="#ff6b35" font-size="10">drag handle:</text>
+  <text x="886" y="247" fill="#ff6b35" font-size="10">reordena</text>
+
+  <!-- ===== BOTTOM: Track metadata (when selected) ===== -->
+  <text x="500" y="440" fill="#888" font-size="11" font-weight="bold" letter-spacing="1">TRACK DETAILS</text>
+  <text x="695" y="440" fill="#555" font-size="10">(campos editaveis por track no setlist)</text>
+
+  <rect x="500" y="455" width="410" height="95" rx="6" fill="#1a1a1a"/>
+  
+  <!-- Tuning -->
+  <text x="520" y="478" fill="#888" font-size="10" font-weight="bold">TUNING</text>
+  <rect x="520" y="485" width="110" height="28" rx="4" fill="#2a2a2a" stroke="#333" stroke-width="1"/>
+  <text x="535" y="504" fill="#e8e8e8" font-size="11">Standard E</text>
+  <text x="612" y="504" fill="#555" font-size="10">&#x25BC;</text>
+
+  <!-- BPM -->
+  <text x="650" y="478" fill="#888" font-size="10" font-weight="bold">BPM</text>
+  <rect x="650" y="485" width="70" height="28" rx="4" fill="#2a2a2a" stroke="#333" stroke-width="1"/>
+  <text x="665" y="504" fill="#e8e8e8" font-size="11">128</text>
+
+  <!-- Notes -->
+  <text x="740" y="478" fill="#888" font-size="10" font-weight="bold">NOTES</text>
+  <rect x="740" y="485" width="155" height="28" rx="4" fill="#2a2a2a" stroke="#333" stroke-width="1"/>
+  <text x="755" y="504" fill="#555" font-size="11">Add a note...</text>
+
+  <!-- Tuning options annotation -->
+  <line x1="575" y1="520" x2="575" y2="545" stroke="#ff6b35" stroke-dasharray="4" stroke-width="1"/>
+  <text x="505" y="558" fill="#ff6b35" font-size="10">dropdown: Standard E, Drop D,</text>
+  <text x="505" y="571" fill="#ff6b35" font-size="10">D Standard, C Standard, Drop C,</text>
+  <text x="505" y="584" fill="#ff6b35" font-size="10">B Standard, Drop B, Drop A</text>
+
+  <!-- ===== BOTTOM BAR: Save actions ===== -->
+  <rect x="60" y="620" width="850" height="50" rx="6" fill="#1a1a1a"/>
+  
+  <!-- Setlist name input -->
+  <text x="80" y="642" fill="#888" font-size="10">SETLIST NAME</text>
+  <rect x="80" y="646" width="250" height="22" rx="3" fill="#2a2a2a" stroke="#333" stroke-width="1"/>
+  <text x="92" y="661" fill="#555" font-size="11">My Thrash Set...</text>
+
+  <!-- Summary -->
+  <text x="560" y="650" fill="#888" font-size="11" text-anchor="end">2 tracks  -  11:44</text>
+
+  <!-- Save button -->
+  <rect x="780" y="633" width="110" height="32" rx="6" fill="#ff6b35"/>
+  <text x="808" y="654" fill="#fff" font-size="13" font-weight="bold">Save Setlist</text>
+
+  <!-- Save annotation -->
+  <line x1="835" y1="630" x2="835" y2="610" stroke="#ff6b35" stroke-dasharray="4" stroke-width="1"/>
+  <text x="760" y="605" fill="#ff6b35" font-size="10">POST /api/setlists</text>
+  <text x="760" y="618" fill="#ff6b35" font-size="10">(milestone M4)</text>
+
+  <!-- Footer -->
+  <text x="480" y="740" fill="#333" font-size="10" text-anchor="middle">+ botao pra voltar e adicionar tracks de OUTROS albuns ao mesmo setlist</text>
+</svg>

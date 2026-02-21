@@ -26,3 +26,44 @@ export interface MBReleaseGroupSearchResponse {
   "release-group-offset": number;
   "release-group-count": number;
 }
+
+export interface MBRelease {
+  id: string;
+  title: string;
+  status?: string;
+  date?: string;
+  country?: string;
+}
+
+export interface MBReleaseListResponse {
+  releases: MBRelease[];
+  "release-offset": number;
+  "release-count": number;
+}
+
+export interface MBTrack {
+  id: string;
+  title: string;
+  position: number;
+  length?: number | null;
+  recording: {
+    id: string;
+    title: string;
+    length?: number | null;
+  };
+}
+
+export interface MBMedia {
+  position: number;
+  format?: string;
+  "track-count": number;
+  tracks: MBTrack[];
+}
+
+export interface MBReleaseDetailResponse {
+  id: string;
+  title: string;
+  status?: string;
+  date?: string;
+  media: MBMedia[];
+}

@@ -12,6 +12,14 @@ export interface AlbumResult {
   coverUrl: string;
 }
 
+export interface TrackResult {
+  id: string;
+  title: string;
+  position: number;
+  duration: string | null;
+  disc: number;
+}
+
 export interface ApiErrorResponse {
   error: string;
 }

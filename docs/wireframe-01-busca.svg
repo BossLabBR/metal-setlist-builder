@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" font-family="monospace" font-size="13">
+  <rect width="960" height="640" fill="#111"/>
+  
+  <!-- Title -->
+  <text x="480" y="30" fill="#ff6b35" font-size="16" text-anchor="middle" font-weight="bold">TELA 1 - BUSCA DE BANDAS</text>
+
+  <!-- Browser frame -->
+  <rect x="30" y="50" width="900" height="560" rx="8" fill="#0d0d0d" stroke="#444" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <rect x="30" y="50" width="900" height="50" rx="8" fill="#1a1a1a"/>
+  <rect x="30" y="92" width="900" height="8" fill="#1a1a1a"/>
+  <text x="60" y="82" fill="#ff6b35" font-size="15" font-weight="bold">METAL SETLIST BUILDER</text>
+  <rect x="780" y="65" width="120" height="30" rx="4" fill="none" stroke="#444" stroke-width="1"/>
+  <text x="806" y="84" fill="#888" font-size="12">My Setlists</text>
+
+  <!-- Search section -->
+  <text x="480" y="160" fill="#e8e8e8" font-size="20" text-anchor="middle" font-weight="bold">Search for a band</text>
+  
+  <rect x="180" y="180" width="520" height="48" rx="6" fill="#2a2a2a" stroke="#333" stroke-width="1"/>
+  <text x="205" y="210" fill="#555" font-size="14">Type a band name...</text>
+  
+  <rect x="710" y="180" width="90" height="48" rx="6" fill="#ff6b35"/>
+  <text x="733" y="210" fill="#fff" font-size="14" font-weight="bold">Search</text>
+
+  <!-- Annotation: search -->
+  <line x1="810" y1="204" x2="880" y2="160" stroke="#ff6b35" stroke-dasharray="4" stroke-width="1"/>
+  <text x="810" y="150" fill="#ff6b35" font-size="10">GET /api/artists/search?q=...</text>
+
+  <!-- Results label -->
+  <text x="180" y="270" fill="#888" font-size="11" font-weight="bold" letter-spacing="1">RESULTS</text>
+
+  <!-- Result card 1 -->
+  <rect x="180" y="285" width="620" height="64" rx="6" fill="#1a1a1a"/>
+  <circle cx="225" cy="317" r="18" fill="#2a2a2a"/>
+  <text x="215" y="322" fill="#555" font-size="14">M</text>
+  <text x="258" y="308" fill="#e8e8e8" font-size="14" font-weight="bold">Megadeth</text>
+  <text x="258" y="328" fill="#888" font-size="11">US  -  thrash metal, heavy metal, speed metal</text>
+  <text x="740" y="318" fill="#ff6b35" font-size="12">Score: 100</text>
+
+  <!-- Result card 2 -->
+  <rect x="180" y="360" width="620" height="64" rx="6" fill="#1a1a1a"/>
+  <circle cx="225" cy="392" r="18" fill="#2a2a2a"/>
+  <text x="215" y="397" fill="#555" font-size="14">M</text>
+  <text x="258" y="383" fill="#e8e8e8" font-size="14" font-weight="bold">Megadeth Tribute</text>
+  <text x="258" y="403" fill="#888" font-size="11">BR  -  tribute</text>
+  <text x="740" y="393" fill="#ff6b35" font-size="12">Score: 42</text>
+
+  <!-- Result card 3 -->
+  <rect x="180" y="435" width="620" height="64" rx="6" fill="#1a1a1a"/>
+  <circle cx="225" cy="467" r="18" fill="#2a2a2a"/>
+  <text x="215" y="472" fill="#555" font-size="14">M</text>
+  <text x="258" y="458" fill="#e8e8e8" font-size="14" font-weight="bold">Megadeth Cover Band</text>
+  <text x="258" y="478" fill="#888" font-size="11">DE  -  cover</text>
+  <text x="740" y="468" fill="#ff6b35" font-size="12">Score: 28</text>
+
+  <!-- Annotation: click -->
+  <line x1="808" y1="317" x2="880" y2="340" stroke="#ff6b35" stroke-dasharray="4" stroke-width="1"/>
+  <text x="820" y="355" fill="#ff6b35" font-size="10">click abre Tela 2</text>
+  <text x="820" y="368" fill="#ff6b35" font-size="10">(discografia)</text>
+
+  <!-- Footer hint -->
+  <text x="480" y="570" fill="#333" font-size="10" text-anchor="middle">SPA: tudo numa pagina, mostra/esconde secoes com JS</text>
+</svg>

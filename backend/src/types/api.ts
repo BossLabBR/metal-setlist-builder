@@ -5,6 +5,13 @@ export interface ArtistSearchResult {
   disambiguation: string | null;
 }
 
+export interface AlbumResult {
+  id: string;
+  title: string;
+  year: number | null;
+  coverUrl: string;
+}
+
 export interface ApiErrorResponse {
   error: string;
 }

@@ -1,0 +1,282 @@
+openapi: "3.1.0"
+info:
+  title: Metal Setlist Builder API
+  description: |
+    Backend API for Metal Setlist Builder.
+    Proxies data from MusicBrainz to search artists, browse albums, and list tracks.
+  version: "1.0.0"
+
+servers:
+  - url: http://localhost:3000
+    description: Local development server
+
+tags:
+  - name: Health
+    description: Service health check
+  - name: Artists
+    description: Artist search via MusicBrainz
+  - name: Albums
+    description: Albums (release groups) by artist
+  - name: Tracks
+    description: Tracks (recordings) by release group
+
+paths:
+  /health:
+    get:
+      operationId: healthCheck
+      tags: [Health]
+      summary: Health check
+      description: Returns the service status.
+      responses:
+        "200":
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+              example:
+                status: ok
+
+  /api/artists/search:
+    get:
+      operationId: searchArtists
+      tags: [Artists]
+      summary: Search artists
+      description: |
+        Searches MusicBrainz for artists matching the query string.
+        Returns up to 25 results sorted by relevance.
+      parameters:
+        - name: q
+          in: query
+          required: true
+          description: Search query (artist name)
+          schema:
+            type: string
+            minLength: 1
+          example: Slayer
+      responses:
+        "200":
+          description: List of matching artists
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ArtistSearchResult"
+              example:
+                - id: "934e8258-cd8a-4e8a-b32d-f1a2b0560f10"
+                  name: Slayer
+                  country: US
+                  disambiguation: "thrash metal band"
+        "400":
+          description: Missing or empty query parameter
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                error: "Query parameter 'q' is required"
+        "502":
+          $ref: "#/components/responses/MusicBrainzUnavailable"
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+  /api/artists/{id}/albums:
+    get:
+      operationId: getAlbumsByArtist
+      tags: [Albums]
+      summary: Get albums by artist
+      description: |
+        Returns all studio albums (release groups of type "Album") for the given
+        artist ID. Results are filtered to primary releases, sorted by year
+        (ascending), and cached for 5 minutes.
+      parameters:
+        - $ref: "#/components/parameters/MusicBrainzId"
+      responses:
+        "200":
+          description: List of albums for the artist
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/AlbumResult"
+              example:
+                - id: "e4dadfc0-e43b-31f4-9fba-55c9f7dfbb58"
+                  title: Reign in Blood
+                  year: 1986
+                  coverUrl: "https://coverartarchive.org/release-group/e4dadfc0-e43b-31f4-9fba-55c9f7dfbb58/front-250"
+        "400":
+          description: Invalid ID format (must be a UUID)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                error: "Invalid ID format"
+        "404":
+          description: Artist not found on MusicBrainz
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                error: "Resource not found on MusicBrainz"
+        "502":
+          $ref: "#/components/responses/MusicBrainzUnavailable"
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+  /api/albums/{id}/tracks:
+    get:
+      operationId: getTracksByAlbum
+      tags: [Tracks]
+      summary: Get tracks by album
+      description: |
+        Returns all tracks for the given release group ID. Performs a 2-step
+        lookup: first fetches releases in the group, then retrieves the track
+        listing from the first release. Results are cached for 5 minutes.
+      parameters:
+        - $ref: "#/components/parameters/MusicBrainzId"
+      responses:
+        "200":
+          description: List of tracks for the album
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TrackResult"
+              example:
+                - id: "b1e1b28c-3ff3-4087-a881-b1ef88d7c2e0"
+                  title: Angel of Death
+                  position: 1
+                  duration: "4:51"
+                  disc: 1
+        "400":
+          description: Invalid ID format (must be a UUID)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                error: "Invalid ID format"
+        "404":
+          description: Release group not found on MusicBrainz
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+              example:
+                error: "Resource not found on MusicBrainz"
+        "502":
+          $ref: "#/components/responses/MusicBrainzUnavailable"
+        "500":
+          $ref: "#/components/responses/InternalError"
+
+components:
+  schemas:
+    HealthResponse:
+      type: object
+      required: [status]
+      properties:
+        status:
+          type: string
+          example: ok
+
+    ArtistSearchResult:
+      type: object
+      required: [id, name, country, disambiguation]
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: MusicBrainz artist ID
+        name:
+          type: string
+          description: Artist name
+        country:
+          type: ["string", "null"]
+          description: ISO 3166-1 country code
+        disambiguation:
+          type: ["string", "null"]
+          description: Extra info to distinguish similarly named artists
+
+    AlbumResult:
+      type: object
+      required: [id, title, year, coverUrl]
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: MusicBrainz release group ID
+        title:
+          type: string
+          description: Album title
+        year:
+          type: ["integer", "null"]
+          description: Release year
+        coverUrl:
+          type: string
+          format: uri
+          description: Cover art URL (250px)
+
+    TrackResult:
+      type: object
+      required: [id, title, position, duration, disc]
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: MusicBrainz recording ID
+        title:
+          type: string
+          description: Track title
+        position:
+          type: integer
+          description: Track position in the disc
+        duration:
+          type: ["string", "null"]
+          description: "Formatted duration (e.g. \"4:51\")"
+        disc:
+          type: integer
+          description: Disc number
+
+    ApiErrorResponse:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+          description: Human-readable error message
+
+  parameters:
+    MusicBrainzId:
+      name: id
+      in: path
+      required: true
+      description: MusicBrainz UUID
+      schema:
+        type: string
+        format: uuid
+        pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+      example: "e4dadfc0-e43b-31f4-9fba-55c9f7dfbb58"
+
+  responses:
+    MusicBrainzUnavailable:
+      description: MusicBrainz API is temporarily unavailable
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ApiErrorResponse"
+          example:
+            error: "MusicBrainz temporarily unavailable"
+
+    InternalError:
+      description: Unexpected server error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ApiErrorResponse"
+          example:
+            error: "Internal server error"
